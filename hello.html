@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Aagya</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Share+Tech+Mono&display=swap">
+<style>
+:root{--ink:#fbeff1;--rose:#ff6b95;--gold:#f3c77a;--green:#2dff6e;box-sizing:border-box;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;height:100%;background:#000;color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif;font-size:20px;overflow:hidden}
+.l{position:fixed;pointer-events:none;transition:opacity 1.4s;animation:pulse 5s ease-in-out infinite alternate;z-index:0}
+.l.t{top:0;left:0;right:0;height:38%;background:radial-gradient(ellipse at 50% 0,rgba(255,110,160,.55),transparent 70%)}
+.l.b{bottom:0;left:0;right:0;height:38%;background:radial-gradient(ellipse at 50% 100%,rgba(255,190,120,.45),transparent 70%);animation-delay:-2s}
+.l.le{left:0;top:0;bottom:0;width:34%;background:radial-gradient(ellipse at 0 50%,rgba(255,90,140,.5),transparent 70%);animation-delay:-1s}
+.l.r{right:0;top:0;bottom:0;width:34%;background:radial-gradient(ellipse at 100% 50%,rgba(170,140,255,.5),transparent 70%);animation-delay:-3s}
+@keyframes pulse{from{opacity:.55}to{opacity:1}}
+body.off .l{opacity:0;animation:none}
+.scene{position:fixed;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px;overflow-y:auto;z-index:2}
+.scene.on{display:flex}
+.card{max-width:520px;width:100%;text-align:center;padding:34px 26px;border:1px solid var(--gold);outline:1px solid rgba(243,199,122,.4);outline-offset:6px;background:rgba(10,4,8,.72);border-radius:4px;position:relative;animation:pop .7s cubic-bezier(.2,1.4,.4,1)}
+.card::before,.card::after{content:"✦";position:absolute;color:var(--gold);font-size:18px;background:#0a0408;padding:0 6px;top:-13px}
+.card::before{left:22px}.card::after{right:22px}
+@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:none;opacity:1}}
+h1{font-size:clamp(28px,6vw,40px);line-height:1.2;margin:0 0 8px;font-weight:700;color:var(--gold)}
+p{line-height:1.55;margin:.5em 0}
+.btns{display:flex;gap:14px;justify-content:center;margin-top:22px;flex-wrap:wrap}
+button{font:inherit;font-weight:700;color:#1a0510;background:var(--gold);border:0;border-radius:999px;padding:10px 30px;cursor:pointer;transition:transform .2s,box-shadow .2s}
+button:hover{transform:translateY(-2px);box-shadow:0 0 18px var(--gold)}
+button:focus-visible,input:focus-visible,.env:focus-visible{outline:3px solid #fff;outline-offset:3px}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+body.green .card{border-color:var(--green);outline-color:rgba(45,255,110,.4);background:rgba(0,12,4,.85);color:var(--green);font-family:"Share Tech Mono",monospace}
+body.green .card::before,body.green .card::after{color:var(--green);background:#000}
+body.green h1{color:var(--green)}
+body.green button{background:var(--green);color:#001a08}
+body.green button.ghost{background:transparent;color:var(--green);border-color:var(--green)}
+.shake{animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+svg.bq{width:min(300px,78vw);height:auto;filter:drop-shadow(0 0 22px rgba(255,107,149,.45));transform-origin:50% 100%;animation:grow 1.6s cubic-bezier(.2,1.3,.4,1)}
+@keyframes grow{from{transform:scale(.2);opacity:0}to{transform:none;opacity:1}}
+.env{width:150px;height:100px;background:linear-gradient(135deg,#f6e3c4,#e8c99b);border-radius:4px;position:relative;cursor:pointer;margin-top:6px;box-shadow:0 0 24px rgba(243,199,122,.5);animation:bob 2s ease-in-out infinite alternate}
+.env::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom right,transparent 49%,rgba(0,0,0,.12) 50%),linear-gradient(to bottom left,transparent 49%,rgba(0,0,0,.12) 50%);clip-path:polygon(0 0,100% 0,50% 62%)}
+.env::after{content:"❤";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#c8264f;font-size:26px}
+@keyframes bob{to{transform:translateY(-7px)}}
+.hint{font-style:italic;opacity:.85;margin-top:12px}
+.paper{max-width:600px;width:100%;margin:auto;background:#fbf1dc;color:#3a2230;padding:32px 28px;border-radius:3px;box-shadow:0 0 40px rgba(255,107,149,.45);text-align:left;animation:pop .8s ease-out}
+.paper h2{margin:0 0 12px;font-size:32px;color:#a3173f}
+.paper p{font-size:19px;line-height:1.6}
+.gif{margin:16px auto 0;max-width:260px;width:100%}
+.gif img{width:100%;border-radius:10px;display:block}
+.gif .ph{border:2px dashed currentColor;border-radius:10px;padding:18px 12px;font-family:"Share Tech Mono",monospace;font-size:13px;line-height:1.4;text-align:center;opacity:.85}
+#rain{position:fixed;inset:0;width:100%;height:100%;z-index:1;display:none}
+#s5{background:rgba(0,0,0,.35)}
+.term{font-family:"Share Tech Mono",monospace;color:var(--green);text-align:center;max-width:520px;width:100%;text-shadow:0 0 10px var(--green)}
+.num{font-size:clamp(64px,22vw,130px);letter-spacing:.12em;min-height:1.2em;margin:10px 0}
+.num span{display:inline-block;animation:glitch .6s}
+@keyframes glitch{0%{opacity:0;transform:translateY(-20px) skewX(30deg)}60%{opacity:1;transform:translateX(6px)}100%{transform:none}}
+input{font:inherit;font-family:"Share Tech Mono",monospace;background:#000;color:var(--green);border:1px solid var(--green);padding:10px 14px;border-radius:4px;width:100%;max-width:320px;margin-top:14px;text-align:center}
+.green-text{color:var(--green)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="l t"></div><div class="l b"></div><div class="l le"></div><div class="l r"></div>
+<canvas id="rain" aria-hidden="true"></canvas>
+
+<!-- 1: the message -->
+<section class="scene on" id="s1"><div class="card">
+<h1>Aagya,</h1>
+<p>I just want to share something with you.</p>
+<p>Is it okay if I do?</p>
+<div class="btns"><button id="yes1">Ok</button><button class="ghost" id="no1">No</button></div>
+</div></section>
+
+<!-- 2: the sorry loop -->
+<section class="scene" id="s2"><div class="card" id="c2">
+<h1 id="t2">I am sorry</h1>
+<p id="p2">I am sorry if you are still angry at me.</p>
+<div class="btns"><button id="yes2">Okay, I’ll listen</button><button class="ghost" id="no2">No</button></div>
+</div></section>
+
+<!-- 3: bouquet + envelope -->
+<section class="scene" id="s3">
+<svg class="bq" viewBox="0 0 300 330" role="img" aria-label="A bouquet of roses, chamomile, tulips and lavender">
+<defs>
+<g id="rose"><circle r="20" fill="#d4244f"/><circle r="14" fill="#e8436b" stroke="#8f0f31" stroke-width="2"/><path d="M-8 -2a8 8 0 1 1 8 8a5 5 0 1 1-5-5" fill="none" stroke="#8f0f31" stroke-width="2"/><path d="M-18 6q4 12 18 12" fill="none" stroke="#8f0f31" stroke-width="2"/></g>
+<g id="cham"><g fill="#fff" stroke="#e6dfd0" stroke-width="1"><ellipse cx="0" cy="-15" rx="6" ry="12"/><ellipse cx="0" cy="-15" rx="6" ry="12" transform="rotate(36)"/><ellipse cx="0" cy="-15" rx="6" ry="12" transform="rotate(72)"/><ellipse cx="0" cy="-15" rx="6" ry="12" transform="rotate(108)"/><ellipse cx="0" cy="-15" rx="6" ry="12" transform="rotate(144)"/><ellipse cx="0" cy="-15" rx="6" ry="12" transform="rotate(180)"/><ellipse cx="0" cy="-15" rx="6" ry="12" transform="rotate(216)"/><ellipse cx="0" cy="-15" rx="6" ry="12" transform="rotate(252)"/><ellipse cx="0" cy="-15" rx="6" ry="12" transform="rotate(288)"/><ellipse cx="0" cy="-15" rx="6" ry="12" transform="rotate(324)"/></g><circle r="8" fill="#f7c331"/></g>
+<g id="tulip"><path d="M-14 -22q0 26 14 28q14-2 14-28l-7 10l-7-14l-7 14z" fill="#ff8fb3" stroke="#d1527e" stroke-width="2"/></g>
+<g id="lav"><g fill="#9b7be8"><ellipse cx="0" cy="0" rx="4" ry="6"/><ellipse cx="-4" cy="10" rx="4" ry="6"/><ellipse cx="4" cy="10" rx="4" ry="6"/><ellipse cx="0" cy="20" rx="4" ry="6"/><ellipse cx="-4" cy="30" rx="4" ry="6"/><ellipse cx="4" cy="30" rx="4" ry="6"/></g></g>
+</defs>
+<g stroke="#2f8f4e" stroke-width="4" fill="none" stroke-linecap="round">
+<path d="M150 300Q150 200 150 95"/><path d="M150 300Q120 220 92 130"/><path d="M150 300Q185 220 208 125"/><path d="M150 300Q95 240 62 175"/><path d="M150 300Q205 245 236 180"/><path d="M150 300Q135 200 118 70"/><path d="M150 300Q170 200 184 72"/></g>
+<g fill="#3fae63"><ellipse cx="112" cy="245" rx="22" ry="8" transform="rotate(-35 112 245)"/><ellipse cx="190" cy="248" rx="22" ry="8" transform="rotate(35 190 248)"/><ellipse cx="150" cy="215" rx="8" ry="20"/></g>
+<use href="#lav" x="112" y="38"/><use href="#lav" x="180" y="40"/>
+<use href="#rose" x="150" y="92"/><use href="#rose" x="92" y="128" transform="translate(92 128) scale(.85) translate(-92 -128)"/>
+<use href="#cham" x="208" y="122"/><use href="#cham" x="62" y="172" transform="translate(62 172) scale(.85) translate(-62 -172)"/>
+<use href="#tulip" x="236" y="182"/>
+<g fill="#fff"><circle cx="130" cy="150" r="3"/><circle cx="170" cy="155" r="3"/><circle cx="110" cy="190" r="3"/><circle cx="195" cy="185" r="3"/><circle cx="150" cy="140" r="3"/></g>
+<path d="M105 262L195 262L172 312L128 312Z" fill="#f6dbe3" opacity=".95"/><path d="M150 262l-26 22l26-4l26 4z" fill="#ff6b95"/>
+</svg>
+<p class="hint">Roses, chamomile, tulips and lavender. All for you, Aagya.</p>
+<div class="env" id="env" role="button" tabindex="0" aria-label="Open the letter"></div>
+<p class="hint">Tap the letter to open it</p>
+</section>
+
+<!-- 4: the letter -->
+<section class="scene" id="s4"><div class="paper">
+<h2>Aagya</h2>
+<p>I’m really sorry. Although I never intend for anything I do or say to hurt you, I know that I may have made mistakes and not understood things properly. However, please know that I would never ever intend to hurt you.</p>
+<p>You mean so much to me and the last thing in the world that I would ever want to do is make you sad. Although I can’t change the past, I will definitely take responsibility for my mistakes and try my best to not make any in the future.</p>
+<p>Even if I have apologised to you, I don’t expect you to simply forget everything. You have every right to feel how you do, however, I hope that one day you will be able to forgive me.</p>
+<p>I do not want my egotism to get in the way of our relationship. Also, I do not want us to drift apart due to a small mistake. I would much prefer to put my pride aside, understand you and make things right.</p>
+<p>Although I am far from perfect, I do want to become a better person.</p>
+<p>Once again, I’m really sorry. Please never doubt that you mean the world to me. ❤️</p>
+<div class="gif" data-k="hug" data-d="GIF 1: the brown bear and the white bear hugging tight, hearts floating (the picture you sent)"></div>
+<div class="btns"><button id="next4" style="background:#a3173f;color:#fff">Next</button></div>
+</div></section>
+
+<!-- 5: hacker interface -->
+<section class="scene" id="s5"><div class="term">
+<p id="st">&gt; intercepting signal<span id="dots">...</span></p>
+<div class="num" id="num" aria-live="polite"></div>
+<div id="after" style="display:none">
+<p>&gt; message received:</p>
+<p>Decode it and reply to him. He is waiting.</p>
+<input id="ans" type="text" placeholder="type what it means" autocomplete="off" aria-label="Your decoded answer">
+<p id="fb" class="hint"></p>
+<div class="btns"><button id="send">Reply</button></div>
+<div class="gif" data-k="wait" data-d="GIF 2: the brown bear waiting anxiously, peeking at a phone, white bear looking shy"></div>
+</div>
+</div></section>
+
+<!-- 6: final -->
+<section class="scene" id="s6"><div class="card">
+<h1>Decoded.</h1>
+<p>Now go tell him. He has been waiting, and he means every word of that letter. 💚</p>
+<div class="gif" data-k="love" data-d="GIF 3: the two bears cuddling with pink hearts around them, happy ending"></div>
+</div></section>
+
+<script>
+// Paste GIFs here as data: URIs (or leave empty to see the placeholder boxes).
+// keys: hug, wait, love
+const GIFS = { hug: "", wait: "", love: "" };
+
+const $ = id => document.getElementById(id);
+function show(id){
+  document.querySelectorAll(".scene").forEach(s => s.classList.toggle("on", s.id === id));
+}
+document.querySelectorAll(".gif").forEach(g => {
+  const k = g.dataset.k;
+  if (GIFS[k]) { const i = new Image(); i.src = GIFS[k]; i.alt = g.dataset.d; g.appendChild(i); }
+  else { g.innerHTML = '<div class="ph">' + g.dataset.d + '</div>'; }
+});
+
+// 1 -> 2 / 3
+$("yes1").onclick = () => show("s3");
+$("no1").onclick = () => { document.body.classList.add("off","green"); show("s2"); };
+
+// 2: the sorry loop
+const lines = [
+  "I am sorry if you are still angry at me.",
+  "I am really sorry. Please don’t stay angry.",
+  "Sorry, sorry, sorry. I will say it a hundred times.",
+  "I’m still here, and I’m still sorry.",
+  "Just one more look? I am so sorry."
+];
+let n = 0;
+$("no2").onclick = () => {
+  n = (n + 1) % lines.length;
+  $("p2").textContent = lines[n];
+  const c = $("c2"); c.classList.remove("shake"); void c.offsetWidth; c.classList.add("shake");
+};
+$("yes2").onclick = () => { document.body.classList.remove("off","green"); show("s3"); };
+
+// 3 -> 4
+const openLetter = () => show("s4");
+$("env").onclick = openLetter;
+$("env").onkeydown = e => { if (e.key === "Enter" || e.key === " ") openLetter(); };
+
+// 4 -> 5 (hacker)
+const rain = $("rain"), cx = rain.getContext("2d");
+let rainTimer;
+function startRain(){
+  rain.width = innerWidth; rain.height = innerHeight; rain.style.display = "block";
+  const cols = Math.floor(rain.width / 16), drops = Array(cols).fill(0).map(() => Math.random() * -40);
+  const draw = () => {
+    cx.fillStyle = "rgba(0,0,0,.12)"; cx.fillRect(0, 0, rain.width, rain.height);
+    cx.fillStyle = "#2dff6e"; cx.font = "15px monospace";
+    drops.forEach((y, i) => {
+      cx.fillText(Math.random() < .5 ? "1" : "0", i * 16, y * 16);
+      drops[i] = y * 16 > rain.height && Math.random() > .975 ? 0 : y + 1;
+    });
+  };
+  draw();
+  if (!matchMedia("(prefers-reduced-motion:reduce)").matches) rainTimer = setInterval(draw, 55);
+}
+$("next4").onclick = () => {
+  document.body.classList.add("off","green");
+  show("s5"); startRain();
+  const digits = ["1","4","3"]; let i = 0;
+  const t = setInterval(() => {
+    const s = document.createElement("span"); s.textContent = digits[i++];
+    $("num").appendChild(s);
+    $("st").innerHTML = "&gt; signal " + i + " of 3 received";
+    if (i === 3) { clearInterval(t); setTimeout(() => { $("after").style.display = "block"; $("ans").focus(); }, 1200); }
+  }, 5000);
+};
+
+// 5 -> 6
+function reply(){
+  const v = $("ans").value.toLowerCase();
+  if (v.includes("love")) {
+    clearInterval(rainTimer); rain.style.display = "none";
+    document.body.classList.remove("green"); document.body.classList.add("off");
+    document.body.classList.remove("off"); show("s6");
+  } else {
+    $("fb").textContent = "Not yet. Count the letters in each word of a three-word sentence.";
+  }
+}
+$("send").onclick = reply;
+$("ans").onkeydown = e => { if (e.key === "Enter") reply(); };
+</script>
+</body>
+</html>
